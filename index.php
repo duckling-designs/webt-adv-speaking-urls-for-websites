@@ -1,8 +1,9 @@
 <?php
+header('Content-type: application/json');
+
 require 'src/VideoGameOst.php';
 require 'src/Song.php';
 
-header('Content-type: application/json');
 
 
 $song1 = new Song(1, 'Northern Attitude', 'Noah Kahan & Hozier', 1, '4:27');

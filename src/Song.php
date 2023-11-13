@@ -1,6 +1,6 @@
 <?php
 
-class Song {
+class Song implements \JsonSerializable {
     private int $ID;
     private string $name;
     private string $artist;
@@ -48,4 +48,12 @@ class Song {
         $this->duration = $duration;
     }
 
+    public function jsonSerialize(): array {
+        return array (
+            'ID' => $this->ID,
+            'name' => $this->name,
+            'artist' => $this->artist,
+            'trackNumber' => $this->trackNumber,
+            'duration' => $this->duration
+        );    }
 }

@@ -1,6 +1,6 @@
 <?php
 
-class VideoGameOst {
+class VideoGameOst implements \JsonSerializable {
     private int $ID;
     private string $name;
     private string $videogameName;
@@ -49,4 +49,12 @@ class VideoGameOst {
         $this->trackList = $trackList;
     }
 
+    public function jsonSerialize(): array {
+        return array (
+            'ID' => $this->ID,
+            'name' => $this->name,
+            'videogameName' => $this->videogameName,
+            'releaseYear' => $this->releaseYear,
+            'trackList' => $this->trackList
+        );    }
 }
