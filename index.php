@@ -1,16 +1,23 @@
 <?php
-header('Content-type: application/json');
+header('Content-Type: application/json');
 
-require 'src/VideoGameOst.php';
+require 'src/Seeder.php';
+require 'src/VideoGameOST.php';
 require 'src/Song.php';
 
+$osts = Seeder::getOSTs();
 
+if (isset($_GET['ost'])) {
+    foreach ($osts as $ost) {
+        if ($ost->ID == $_GET['ost']) {
+            echo json_encode($ost);
+        }
+    }
 
-$song1 = new Song(1, 'Northern Attitude', 'Noah Kahan & Hozier', 1, '4:27');
-$song2 = new Song(2, 'Every Breath You Take', 'The police', 1, '4:13');
+    if ($_GET['ost'] == 'all') {
+        echo json_encode($osts);
+    }
 
-$trackList = [$song1, $song2];
-
-$ost = new VideoGameOST(1, 'OST1', 'Video Game 1', 2023, $trackList);
-
-echo json_encode($ost);
+} else {
+    echo json_encode($osts);
+}
