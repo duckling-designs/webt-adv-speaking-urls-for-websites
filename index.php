@@ -2,14 +2,14 @@
 header('Content-Type: application/json');
 
 require 'src/Seeder.php';
-require 'src/VideoGameOST.php';
+require 'src/VideoGameOst.php';
 require 'src/Song.php';
 
 $osts = Seeder::getOSTs();
 
 if (isset($_GET['ost'])) {
     foreach ($osts as $ost) {
-        if ($ost->ID == $_GET['ost']) {
+        if ($ost->getID() == $_GET['ost']) {
             echo json_encode($ost);
         }
     }
