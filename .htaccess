@@ -1,0 +1,6 @@
+DirectoryIndex index.php
+RewriteEngine on
+RewriteBase /
+RewriteRule ^(ost/)?(\d+)$ index.php?ost=$2
+RewriteRule ^(ost/)?(\d+)(/song)?/(\d+)$ index.php?ost=$2&song=$4
+RewriteRule ^(ost/)?all$ index.php?ost=all

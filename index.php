@@ -10,7 +10,15 @@ $osts = Seeder::getOSTs();
 if (isset($_GET['ost'])) {
     foreach ($osts as $ost) {
         if ($ost->getID() == $_GET['ost']) {
-            echo json_encode($ost);
+            if (isset($_GET['song'])) {
+                foreach ($ost->getTrackList() as $song) {
+                    if ($song->getID() == $_GET['song']) {
+                        echo json_encode($song);
+                    }
+                }
+            } else {
+                echo json_encode($ost);
+            }
         }
     }
 
